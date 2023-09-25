@@ -62,7 +62,31 @@ export const availableDrone = Joi.object({
                 .min(1) // Adjust the minimum value as needed
                 .required(),
         }),
-    });
+});
 
+export const batteryHealth =  Joi.object({
+        params: Joi.object({
+            droneId: Joi.number()
+                .integer()
+                .min(1) // Adjust the minimum value as needed
+                .required(),
+        }),
+});
+
+export const drugMedication = Joi.object({
+    name: Joi.string()
+        .pattern(/^[a-zA-Z0-9-_]+$/)
+        .max(100)
+        .required(),
+})
+
+export const specificMedication = Joi.object({
+        params: Joi.object({
+            medicationId: Joi.number()
+                .integer()
+                .min(1) // Adjust the minimum value as needed
+                .required(),
+        }),
+});
 
 

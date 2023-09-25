@@ -1,7 +1,7 @@
 // src/routes/droneRoutes.ts
 import express from 'express';
 import { DroneController } from '../controller/droneController';
-import { validateInput, validateMedical , validateLoadedMedication, validateAvailableDrone } from '../middleware/validate';
+import { validateInput, validateMedical , validateLoadedMedication, validateAvailableDrone, validateBattery } from '../middleware/validate';
 
 const router = express.Router();
 const droneController = new DroneController();
@@ -19,6 +19,6 @@ router.get('/:droneId/loaded-medication', validateLoadedMedication, droneControl
 router.get('/available-drones', validateAvailableDrone, droneController.getAvailableDrones);
 
 // Route to check the battery level for a given drone
-router.get('/:droneId/battery-level', droneController.getBatteryLevel);
+router.get('/:droneId/battery-level', validateBattery, droneController.getBatteryLevel);
 
 export { router };
