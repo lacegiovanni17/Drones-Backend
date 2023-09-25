@@ -1,4 +1,3 @@
-// src/middleware/notFoundHandler.ts
 import { Request, Response } from 'express';
 
 export const notFoundHandler = (

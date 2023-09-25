@@ -4,9 +4,25 @@ import { Drone } from '../models/Drone';
 import { Medication } from '../models/Medication';
 import { Op } from 'sequelize';
 
+interface CreateDroneRequest {
+  body: {
+    serialNumber: string;
+    model: string;
+    weightLimit: number;
+    batteryCapacity: number;
+  };
+}
+
+interface LoadMedicationRequest {
+  body: {
+    droneId: number;
+    medicationId: number;
+  };
+}
+
 class DroneController {
   // Register a new drone
-  async registerDrone(req: Request, res: Response) {
+  async registerDrone(req: Request<{}, {}, CreateDroneRequest>, res: Response) {
     try {
       const { serialNumber, model, weightLimit, batteryCapacity } = req.body;
 
