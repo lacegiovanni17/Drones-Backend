@@ -24,7 +24,7 @@ class DroneController {
   // Register a new drone
   async registerDrone(req: Request<{}, {}, CreateDroneRequest>, res: Response) {
     try {
-      const { serialNumber, model, weightLimit, batteryCapacity } = req.body;
+      const { serialNumber, model, weightLimit, batteryCapacity }:any = req.body;
 
       const newDrone = await Drone.create({
         serialNumber,

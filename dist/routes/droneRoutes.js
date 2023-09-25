@@ -14,10 +14,10 @@ const droneController = new droneController_1.DroneController();
 // Route to register a new drone
 router.post('/register', validate_1.validateInput, droneController.registerDrone);
 // Route to load medication onto a drone
-router.post('/load', validateMedical, droneController.loadMedication);
+router.post('/load', validate_1.validateMedical, droneController.loadMedication);
 // Route to get loaded medication for a given drone
-router.get('/:droneId/loaded-medication', droneController.getLoadedMedication);
+router.get('/:droneId/loaded-medication', validate_1.validateLoadedMedication, droneController.getLoadedMedication);
 // Route to get available drones for loading
-router.get('/available-drones', droneController.getAvailableDrones);
+router.get('/available-drones', validate_1.validateAvailableDrone, droneController.getAvailableDrones);
 // Route to check the battery level for a given drone
-router.get('/:droneId/battery-level', droneController.getBatteryLevel);
+router.get('/:droneId/battery-level', validate_1.validateBattery, droneController.getBatteryLevel);

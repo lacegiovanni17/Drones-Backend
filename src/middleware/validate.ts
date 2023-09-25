@@ -1,8 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { schema, validateMedication, validateLoadedMedicals, availableDrone, batteryHealth, drugMedication, specificMedication  } from "./schema";
 
-
-export const validateInput = (req: Request, res:Response, next: NextFunction) => {
+export const validateInput = (req: Request , res: Response, next: NextFunction) => {
     const { error, value } = schema.validate(req.body);
     if (error) {
         return res.status(400).json({
