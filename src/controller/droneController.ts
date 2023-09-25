@@ -128,7 +128,7 @@ class DroneController {
       res.status(500).json({ error: 'Internal Server Error' });
     }
     }
-    
+
   async getBatteryLevel(req: Request, res: Response) {
     try {
       const { droneId } = req.params;

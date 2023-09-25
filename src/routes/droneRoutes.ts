@@ -3,22 +3,22 @@ import express from 'express';
 import { DroneController } from '../controller/droneController';
 import { validateInput, validateMedical , validateLoadedMedication, validateAvailableDrone, validateBattery } from '../middleware/validate';
 
-const router = express.Router();
+const droneRoutes = express.Router();
 const droneController = new DroneController();
 
 // Route to register a new drone
-router.post('/register', validateInput, droneController.registerDrone);
+droneRoutes.post('/register', validateInput, droneController.registerDrone);
 
 // Route to load medication onto a drone
-router.post('/load', validateMedical, droneController.loadMedication);
+droneRoutes.post('/load', validateMedical, droneController.loadMedication);
 
 // Route to get loaded medication for a given drone
-router.get('/:droneId/loaded-medication', validateLoadedMedication, droneController.getLoadedMedication);
+droneRoutes.get('/:droneId/loaded-medication', validateLoadedMedication, droneController.getLoadedMedication);
 
 // Route to get available drones for loading
-router.get('/available-drones', validateAvailableDrone, droneController.getAvailableDrones);
+droneRoutes.get('/available-drones', validateAvailableDrone, droneController.getAvailableDrones);
 
 // Route to check the battery level for a given drone
-router.get('/:droneId/battery-level', validateBattery, droneController.getBatteryLevel);
+droneRoutes.get('/:droneId/battery-level', validateBattery, droneController.getBatteryLevel);
 
-export { router };
+export default droneRoutes;
